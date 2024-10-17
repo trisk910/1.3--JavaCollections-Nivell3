@@ -5,6 +5,7 @@ import Level1.Persistance.countriesDAO;
 import Level1.Persistance.scoreListDAO;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class MainLevel1 {
     public static void main(String[] args) {
@@ -74,18 +75,18 @@ public class MainLevel1 {
             System.out.println("Pais: " + entry.getKey() + " Capital: " + entry.getValue());
         }*/
 
-        System.out.println("Introdueix el teu nom: ");
+        System.out.println("Whats your name: ");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
 
 
         int score = 0;
         List<String> countriesList = new ArrayList<>(countriesMap.keySet());
-        Random random = new Random();
 
         for (int i = 0; i < 10; i++) {
-            String randomCountry = countriesList.get(random.nextInt(countriesList.size()));
-            System.out.println("Quina és la capital de " + randomCountry + "?");
+            int rand = ThreadLocalRandom.current().nextInt(0, countriesList.size()+1);
+            String randomCountry = countriesList.get(rand);
+            System.out.println("What is the capital of " + randomCountry + "?");
             String userAnswer = scanner.nextLine();
 
             if (userAnswer.equalsIgnoreCase(countriesMap.get(randomCountry))) {
@@ -100,5 +101,7 @@ public class MainLevel1 {
         Player.put(name, score);
 
         scoreList.saveScore(Player);
+
     }
+
 }
