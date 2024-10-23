@@ -34,12 +34,45 @@ public class UIController {
                         break;
                     case 2:
                         try{
-                            showSortedPersonsByName(persons);
+                            showSortedPersonsByNameAZ(persons);
                         }catch (ExceptionEmptyList e){
                             System.out.println(e.getMessage());
                         }
                         break;
                     case 3:
+                        try{
+                            showSortedPersonsByNameZA(persons);
+                        }catch (ExceptionEmptyList e){
+                            System.out.println(e.getMessage());
+                        }
+                        break;
+                    case 4:
+                        try{
+                            showSortedPersonsBySurnameAZ(persons);
+                        }catch (ExceptionEmptyList e){
+                            System.out.println(e.getMessage());
+                        }
+                        break;
+                    case 5:
+                        try {
+                            showSortedPersonsBySurnameZA(persons);
+                        }catch (ExceptionEmptyList e){
+                            System.out.println(e.getMessage());
+                        }
+                        break;
+                    case 6:
+                        try {
+                            showSortedPersonsByDNI1(persons);
+                        }catch (ExceptionEmptyList e){
+                            System.out.println(e.getMessage());
+                        }
+                        break;
+                    case 7:
+                        try {
+                            showSortedPersonsByDNI2(persons);
+                        }catch (ExceptionEmptyList e){
+                            System.out.println(e.getMessage());
+                        }
                         break;
                     default:
                         System.out.println("Opció no vàlida.\n");
@@ -55,7 +88,7 @@ public class UIController {
     private void addPerson(ArrayList<Person> persons) {
         System.out.print("Introdueix el nom de la persona: ");
         String name = askForString();
-        System.out.print("Introdueix el cognom de la persona: ");
+        System.out.print("Introdueix els cognoms de la persona[c1 c2]: ");
         String surname = askForString();
         System.out.print("Introdueix el DNI de la persona: ");
         String DNI = askForString();
@@ -64,11 +97,73 @@ public class UIController {
         personDAO.writePerson(person);
     }
 
-    private void showSortedPersonsByName(ArrayList<Person> persons) {
+    private void showSortedPersonsByNameAZ(ArrayList<Person> persons) {
         if (persons.isEmpty()) {
             throw new ExceptionEmptyList(emptyList);
         } else {
             TreeSet<Person> sortedPersons = new TreeSet<>(Comparator.comparing(Person::getName));
+            sortedPersons.addAll(persons);
+            for (Person person : sortedPersons) {
+                System.out.println(person);
+            }
+            System.out.println();
+        }
+    }
+    private void showSortedPersonsByNameZA(ArrayList<Person> persons) {
+        if (persons.isEmpty()) {
+            throw new ExceptionEmptyList(emptyList);
+        } else {
+            TreeSet<Person> sortedPersons = new TreeSet<>(Comparator.comparing(Person::getName).reversed());
+            sortedPersons.addAll(persons);
+            for (Person person : sortedPersons) {
+                System.out.println(person);
+            }
+            System.out.println();
+        }
+    }
+
+    private void showSortedPersonsBySurnameAZ(ArrayList<Person> persons) {
+        if (persons.isEmpty()) {
+            throw new ExceptionEmptyList(emptyList);
+        } else {
+            TreeSet<Person> sortedPersons = new TreeSet<>(Comparator.comparing(Person::getSurname));
+            sortedPersons.addAll(persons);
+            for (Person person : sortedPersons) {
+                System.out.println(person);
+            }
+            System.out.println();
+        }
+    }
+    private void showSortedPersonsBySurnameZA(ArrayList<Person> persons) {
+        if (persons.isEmpty()) {
+            throw new ExceptionEmptyList(emptyList);
+        } else {
+            TreeSet<Person> sortedPersons = new TreeSet<>(Comparator.comparing(Person::getSurname).reversed());
+            sortedPersons.addAll(persons);
+            for (Person person : sortedPersons) {
+                System.out.println(person);
+            }
+            System.out.println();
+        }
+    }
+
+    private void showSortedPersonsByDNI1(ArrayList<Person> persons) {
+        if (persons.isEmpty()) {
+            throw new ExceptionEmptyList(emptyList);
+        } else {
+            TreeSet<Person> sortedPersons = new TreeSet<>(Comparator.comparing(Person::getDNI));
+            sortedPersons.addAll(persons);
+            for (Person person : sortedPersons) {
+                System.out.println(person);
+            }
+            System.out.println();
+        }
+    }
+    private void showSortedPersonsByDNI2(ArrayList<Person> persons) {
+        if (persons.isEmpty()) {
+            throw new ExceptionEmptyList(emptyList);
+        } else {
+            TreeSet<Person> sortedPersons = new TreeSet<>(Comparator.comparing(Person::getDNI).reversed());
             sortedPersons.addAll(persons);
             for (Person person : sortedPersons) {
                 System.out.println(person);

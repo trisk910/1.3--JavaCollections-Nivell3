@@ -71,10 +71,6 @@ public class MainLevel1 {
         HashMap<String, String> countriesMap = countries.readCountriesFromFile("countries.txt");
         scoreListDAO scoreList = new scoreListDAO();
 
-        /*for (Map.Entry<String, String> entry : countriesMap.entrySet()) {
-            System.out.println("Pais: " + entry.getKey() + " Capital: " + entry.getValue());
-        }*/
-
         System.out.println("Whats your name: ");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();

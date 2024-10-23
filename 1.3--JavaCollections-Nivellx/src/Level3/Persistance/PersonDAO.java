@@ -21,9 +21,8 @@ public class PersonDAO {
     }
 
     public void writePerson(Person person) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            writer.write(person.getName() + " " + person.getSurname() + " " + person.getDNI());
-            writer.newLine();
+        try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)))) {
+            writer.println(person.getName() + " " + person.getSurname() + " " + person.getDNI());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,9 +34,12 @@ public class PersonDAO {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ");
-                String surname = parts[1] + " " + parts[2];
-                persons.add(new Person(parts[0], surname, parts[3]));
-
+                if (parts.length >= 3) {
+                    String surname = parts[1] + " " + parts[2];
+                    persons.add(new Person(parts[0], surname, parts[3]));
+                } else {
+                    System.out.println("ERROR: Format de persona incorrecte");
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
