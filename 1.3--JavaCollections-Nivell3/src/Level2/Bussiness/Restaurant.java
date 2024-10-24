@@ -24,8 +24,6 @@ public class Restaurant implements Comparable<Restaurant> {
         return score == that.score && Objects.equals(name, that.name);
     }
 
-
-
     @Override
     public int hashCode() {
         return Objects.hash(name, score);
@@ -38,10 +36,6 @@ public class Restaurant implements Comparable<Restaurant> {
 
     @Override
     public int compareTo(Restaurant o) {
-        int nameComparison = this.name.compareTo(o.name);
-        if (nameComparison != 0) {
-            return nameComparison;
-        }
-        return Integer.compare(o.score, this.score);
+        return this.name.compareTo(o.name) != 0 ? this.name.compareTo(o.name) : Integer.compare(o.score, this.score);
     }
 }

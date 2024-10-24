@@ -31,10 +31,9 @@ public class PersonDAO {
     public List<Person> getPersons() {
         List<Person> persons = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
+            for (String line; (line = reader.readLine()) != null; ) {
                 String[] parts = line.split(" ");
-                if (parts.length >= 3) {
+                if (parts.length == 4) {
                     String surname = parts[1] + " " + parts[2];
                     persons.add(new Person(parts[0], surname, parts[3]));
                 } else {

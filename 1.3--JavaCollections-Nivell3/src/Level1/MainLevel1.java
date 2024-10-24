@@ -95,9 +95,7 @@ public class MainLevel1 {
         System.out.println("Puntuació final: " + score);
         HashMap<String, Integer> Player = new HashMap<>();
         Player.put(name, score);
-
         scoreList.saveScore(Player);
-
     }
 
 }

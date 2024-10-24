@@ -1,17 +1,15 @@
 package Level3.Presentation;
 
-import Level3.Persistance.ExceptionMenuCatch;
-
 import java.util.Scanner;
 
 public class MainMenu {
 
-    public int showMainMenu() throws ExceptionMenuCatch {
+    public int showMainMenu(){
         Scanner scanner = new Scanner(System.in);
         int menuOption = 0;
         boolean validInput = false;
 
-        while (!validInput) {
+       do{
             System.out.println("1.- Introduir persona.");
             System.out.println("2.- Mostrar les persones ordenades per nom (A-Z).");
             System.out.println("3.- Mostrar les persones ordenades per nom (Z-A).");
@@ -27,9 +25,9 @@ public class MainMenu {
                 menuOption = Integer.parseInt(input);
                 validInput = true;
             } catch (NumberFormatException e) {
-                System.out.println("Opció no disponible.\n");
+                System.err.println("Opció no disponible.\n");
             }
-        }
+        }while (!validInput);
         System.out.println();
         return menuOption;
     }

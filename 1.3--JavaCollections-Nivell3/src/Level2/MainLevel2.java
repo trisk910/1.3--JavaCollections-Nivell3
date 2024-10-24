@@ -3,6 +3,7 @@ package Level2;
 import Level2.Bussiness.Restaurant;
 
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.TreeSet;
 
@@ -12,9 +13,20 @@ public class MainLevel2 {
         System.out.println("Exercici 1");
         HashSet<Restaurant> restaurants = new HashSet<>();
 
-        System.out.print("Quants restaurants vols afegir? ");
+        int numRestaurants = 0;
+        boolean validInput = false;
         Scanner scanner = new Scanner(System.in);
-        int numRestaurants = scanner.nextInt();
+        do {
+
+            try {
+                System.out.print("Quants restaurants vols afegir? ");
+                numRestaurants = scanner.nextInt();
+                validInput = true;
+            } catch (InputMismatchException e) {
+                System.err.println("Si us plau, introdueix un número vàlid.");
+                scanner.next();
+            }
+        }while (!validInput);
 
         for(int i = 0; i < numRestaurants; i++) {
             System.out.print("Nom del restaurant " + (i + 1) + ": ");
