@@ -15,7 +15,7 @@ public class PersonDAO {
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace();
+                e.getMessage();
             }
         }
     }
@@ -24,7 +24,7 @@ public class PersonDAO {
         try (PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)))) {
             writer.println(person.getName() + " " + person.getSurname() + " " + person.getDNI());
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
     }
 
@@ -41,7 +41,7 @@ public class PersonDAO {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return persons;
     }

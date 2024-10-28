@@ -12,7 +12,7 @@ public class scoreListDAO {
                 writer.write(name +" "+ player.get(name) + " punts\n");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
     }
 }

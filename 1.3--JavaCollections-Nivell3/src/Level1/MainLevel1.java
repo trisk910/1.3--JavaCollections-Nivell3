@@ -32,6 +32,8 @@ public class MainLevel1 {
         }
         System.out.println("---------------------HashSet----------------------------");
         HashSet<Month> monthHS = new LinkedHashSet<>(months);
+        monthHS.add(new Month("Gener"));
+        monthHS.add(new Month("Febrer"));
 
         for (Month month : monthHS) {
             System.out.println(month.getMonthName());

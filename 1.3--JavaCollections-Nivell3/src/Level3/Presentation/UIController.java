@@ -27,6 +27,9 @@ public class UIController {
             try {
                 menuOption = mainMenu.showMainMenu();
                 switch (menuOption) {
+                    case 0:
+                        System.out.println("Adeu!");
+                        break;
                     case 1:
                         addPerson(persons);
                         break;

@@ -18,7 +18,7 @@ public class countriesDAO {
                 }
             } while ((line = br.readLine()) != null);
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return countriesMap;
     }
